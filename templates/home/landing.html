@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_content %}
+    <title>Line time</title>
+{% endblock%}
+
+{% block container %}
+  <section class="hero">
+    <h1>¿Que se logro?</h1>
+  </section>
+
+  <div class="title" id="projects">
+    <h1>Proyectos</h1>
+  </div>
+
+  <br>
+
+  <div id="carouselProjects" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {% for project in projects %}
+        {% if forloop.counter0 == 0 %}
+          <li data-target="#carouselProjects" data-slide-to="0" class="active"></li>
+        {% else %}
+          <li data-target="#carouselProjects" data-slide-to="{{ forloop.counter0 }}"></li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+    <div class="carousel-inner">
+      {% for project in projects %}
+        <div class="carousel-item-per carousel-item  {% if forloop.counter == 1 %} active {% endif %}">
+          <a href="{{project.url}}" target="_blanck">
+            <img src="{{project.image}}" class="carousel-item__img" alt="{{project.title}}">
+            <div class="carousel-item__details">
+              <p class="carousel-item__details--title">{{project.title}}</p>
+              <p class="carousel-item__details--subtitle">{{project.description}}.</p>
+              <p class="carousel-item__details--tec">{{ project.tec }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselProjects" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselProjects" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <br>
+
+  <div class="title" id="courses">
+    <h1>Cursos</h1>
+  </div>
+
+  <br>
+
+  <div id="carouselCourses" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      {% for course in courses %}
+        <div class="carousel-item-per carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+          <div class="imageContainer">
+            <img src="{{course.image}}" class="" alt="{{course.title}}">
+          </div>
+          <div class="carousel-item__details">
+            <p class="carousel-item__details--title">{{course.title}}</h5>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselCourses" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselCourses" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  
+  <br>
+
+  <div class="title" id="sessions">
+    <h1>Sesiones tecnicas</h1>
+  </div>
+  
+  <br>
+
+  <div class="sessionContainer">
+    {% for session in sessions %}
+      <div class="card border-primary mb-3 acomodado" style="max-width: 18rem; min-height: 13rem;">
+        <div class="card-header">{{session.title}}</div>
+        <div class="card-body">
+          <p class="card-text">{{session.description}}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
