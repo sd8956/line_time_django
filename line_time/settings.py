@@ -93,7 +93,7 @@ DATABASES = {
     }
 }
 
-HOST = 'mongodb+srv://db_admin:aoMbEowE53yyigEk@cluster0.gnomn.mongodb.net/linetime?retryWrites=true&w=majority'
+HOST = os.getenv('DB_URI')
 
 
 # Password validation
