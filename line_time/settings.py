@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import urllib
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -81,10 +84,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
          "CLIENT": {
-           "name": 'linetime',
-           "host": 'mongodb+srv://db_admin:aoMbEowE53yyigEk@cluster0.gnomn.mongodb.net/linetime?retryWrites=true&w=majority',
-           "username": 'db_admin',
-           "password": 'aoMbEowE53yyigEk',
+           "name": os.getenv('DB_NAME'),
+           "host": os.getenv('DB_URI'),
+           "username": os.getenv('DB_USER'),
+           "password": os.getenv('DB_PASS'),
            "authMechanism": "SCRAM-SHA-1",
         }, 
     }
